@@ -1,0 +1,20 @@
+/* BG-Classes */
+.bg-green {
+    background-color: lightgreen;
+}
+
+.bg-yellow {
+    background-color: yellow;
+}
+
+.bg-blue {
+    background-color: cornflowerblue;
+}
+
+.bg-lightBlue {
+    background-color:deepskyblue;
+}
+
+.text-white {
+    color: white;
+}
