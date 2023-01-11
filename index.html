@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="script.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script defer src="script.js"></script>
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
@@ -25,11 +24,11 @@
         <div class="card flex flex-column">
           <h4>Joe Banker</h4>
           <div class="flex space-between">
-            <p>balance</p>
-            <p>200kr</p>
+            <p >balance</p>
+            <p id="balance"></p>
           </div>
           <div class="flex justify-center flex-end h-100">
-              <button class="w-100 bg-green">Get a loan</button>
+              <button onclick=getALoan() class="w-100 bg-green">Get a loan</button>
           </div>
         </div>
 
