@@ -4,6 +4,8 @@ let hasLoan = false;
 let moneyToPayValue = 0;
 
 let balance = document.getElementById("balance");
+let loanDiv = document.getElementById("loanDiv");
+let loanToPay = document.getElementById("loan");
 let moneyToPay = document.getElementById("moneyToPay");
 
 let loanBtn = document.getElementById("loanBtn");
@@ -12,6 +14,9 @@ let workBtn = document.getElementById("workBtn");
 
 balance.innerText = balanceValue;
 moneyToPay.innerHTML = moneyToPayValue;
+loanToPay.innerHTML = loan;
+
+loanDiv.style.display = "none";
 
 loanBtn.addEventListener("click", function () {
   getLoan();
@@ -27,10 +32,15 @@ workBtn.addEventListener("click", function () {
 
 function getLoan() {
   loan = prompt("Fill in the amount you want to have?");
+  console.log(loan);
+  console.log(balanceValue);
   if (hasLoan == false && loan < balanceValue) {
-    balance.innerHTML = loan;
+    balance.innerHTML = Number(loan) + Number(balanceValue);
     balanceValue = loan;
     hasLoan = true;
+    moneyToPay.innerHTML = loan;
+    loanToPay.innerHTML = loan;
+    loanDiv.style.display = "flex";
   } else if (hasLoan == true) {
     alert("You already have a loan");
   } else if (loan >= balanceValue) {
