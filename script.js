@@ -1,22 +1,32 @@
 let loan = 0;
 let balanceValue = 200;
 let hasLoan = false;
+let moneyToPayValue = 0;
 
 let balance = document.getElementById("balance");
+let moneyToPay = document.getElementById("moneyToPay");
+
 let loanBtn = document.getElementById("loanBtn");
+let bankBtn = document.getElementById("bankBtn");
+let workBtn = document.getElementById("workBtn");
 
 balance.innerText = balanceValue;
-
-console.log(loan);
-console.log(balanceValue);
+moneyToPay.innerHTML = moneyToPayValue;
 
 loanBtn.addEventListener("click", function () {
   getLoan();
 });
 
+bankBtn.addEventListener("click", function () {
+  console.log("bankBtn");
+});
+
+workBtn.addEventListener("click", function () {
+  console.log("workBtn");
+});
+
 function getLoan() {
   loan = prompt("Fill in the amount you want to have?");
-
   if (hasLoan == false && loan < balanceValue) {
     balance.innerHTML = loan;
     balanceValue = loan;
