@@ -5,10 +5,13 @@ let salary = 0;
 
 let balance = document.getElementById("balance");
 let loanDiv = document.getElementById("loanDiv");
+let repayLoanDiv = document.getElementById("repayLoanDiv");
 let loanToPay = document.getElementById("loan");
 let salaryToShow = document.getElementById("salary");
 
 let loanBtn = document.getElementById("loanBtn");
+let loanBtnDiv = document.getElementById("loanBtnDiv");
+let repayLoanBtn = document.getElementById("repayLoanBtn");
 let bankBtn = document.getElementById("bankBtn");
 let workBtn = document.getElementById("workBtn");
 
@@ -17,9 +20,14 @@ salaryToShow.innerHTML = salary;
 loanToPay.innerHTML = loan;
 
 loanDiv.style.display = "none";
+repayLoanDiv.style.display = "none";
 
 loanBtn.addEventListener("click", function () {
   getLoan();
+});
+
+repayLoanBtn.addEventListener("click", function () {
+  console.log("repay btn");
 });
 
 bankBtn.addEventListener("click", function () {
@@ -40,6 +48,8 @@ function getLoan() {
     hasLoan = true;
     loanToPay.innerHTML = loan;
     loanDiv.style.display = "flex";
+    repayLoanDiv.style.display = "flex";
+    loanBtnDiv.style.display = "none";
   } else if (hasLoan == true) {
     alert("You already have a loan");
   } else if (loan >= balanceValue) {
