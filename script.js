@@ -1,19 +1,19 @@
 let loan = 0;
 let balanceValue = 200;
 let hasLoan = false;
-let moneyToPayValue = 0;
+let salary = 0;
 
 let balance = document.getElementById("balance");
 let loanDiv = document.getElementById("loanDiv");
 let loanToPay = document.getElementById("loan");
-let moneyToPay = document.getElementById("moneyToPay");
+let salaryToShow = document.getElementById("salary");
 
 let loanBtn = document.getElementById("loanBtn");
 let bankBtn = document.getElementById("bankBtn");
 let workBtn = document.getElementById("workBtn");
 
 balance.innerText = balanceValue;
-moneyToPay.innerHTML = moneyToPayValue;
+salaryToShow.innerHTML = salary;
 loanToPay.innerHTML = loan;
 
 loanDiv.style.display = "none";
@@ -27,7 +27,7 @@ bankBtn.addEventListener("click", function () {
 });
 
 workBtn.addEventListener("click", function () {
-  console.log("workBtn");
+  getSalaryFromWork();
 });
 
 function getLoan() {
@@ -38,7 +38,6 @@ function getLoan() {
     balance.innerHTML = Number(loan) + Number(balanceValue);
     balanceValue = loan;
     hasLoan = true;
-    moneyToPay.innerHTML = loan;
     loanToPay.innerHTML = loan;
     loanDiv.style.display = "flex";
   } else if (hasLoan == true) {
@@ -46,4 +45,9 @@ function getLoan() {
   } else if (loan >= balanceValue) {
     alert("you cant borrow more money than you have");
   }
+}
+
+function getSalaryFromWork() {
+  salary = Number(salary) + 100;
+  salaryToShow.innerHTML = salary;
 }
