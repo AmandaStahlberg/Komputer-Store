@@ -66,7 +66,22 @@ function getSalaryFromWork() {
 }
 
 function transferMoneyToBalance() {
-  balanceValue = balanceValue + salary;
-  balance.innerHTML = balanceValue;
-  console.log(balanceValue);
+  if (!loan) {
+    balanceValue += salary;
+    balance.innerHTML = balanceValue;
+
+    salary = 0;
+    salaryToShow.innerHTML = salary;
+  } else {
+    let moneyToLoan = salary * 0.1;
+    loan = Number(loan) + Number(moneyToLoan);
+    loanToPay.innerHTML = loan;
+
+    let moneyToBalance = salary * 0.9;
+    balanceValue = Number(balanceValue) + Number(moneyToBalance);
+    balance.innerHTML = balanceValue;
+
+    salary = 0;
+    salaryToShow.innerHTML = salary;
+  }
 }
