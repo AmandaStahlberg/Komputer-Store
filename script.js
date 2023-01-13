@@ -31,7 +31,10 @@ repayLoanBtn.addEventListener("click", function () {
 });
 
 bankBtn.addEventListener("click", function () {
+  transferMoneyToBalance();
   console.log("bankBtn");
+  console.log(balanceValue);
+  console.log(salary);
 });
 
 workBtn.addEventListener("click", function () {
@@ -60,4 +63,10 @@ function getLoan() {
 function getSalaryFromWork() {
   salary = Number(salary) + 100;
   salaryToShow.innerHTML = salary;
+}
+
+function transferMoneyToBalance() {
+  balanceValue = balanceValue + salary;
+  balance.innerHTML = balanceValue;
+  console.log(balanceValue);
 }
