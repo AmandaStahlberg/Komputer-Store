@@ -36,6 +36,7 @@ loanBtn.addEventListener("click", function () {
 
 repayLoanBtn.addEventListener("click", function () {
   console.log("repay btn");
+  repayLoan();
 });
 
 bankBtn.addEventListener("click", function () {
@@ -46,10 +47,15 @@ workBtn.addEventListener("click", function () {
   getSalaryFromWork();
 });
 
-buyBtn.addEventListener("click", function () {
-  buyLaptop();
-  console.log("köp knapp");
-});
+function repayLoan() {
+  if (salary >= loan) {
+    console.log("betala av hela lånet och gör hasloan false");
+  } else if ((salary = 0 || !salary)) {
+    console.log("hej du ha ringa pengar");
+  } else if (salary < loan) {
+    console.log("betala av så mkt du kan men ändra inte hasloan");
+  }
+}
 
 function getLoan() {
   loan = prompt("Fill in the amount you want to have?");
@@ -123,6 +129,12 @@ const handleLaptopMenuChange = (e) => {
   priceElement.innerText = selectedLaptop.price;
 };
 
-laptopsElement.addEventListener("change", handleLaptopMenuChange);
+const handleBuyLaptop = () => {
+  const selectedLaptop = laptops[laptopsElement.selectedIndex].price;
+  if (balanceValue >= selectedLaptop) {
+    alert("hej bra köp");
+  } else alert("hallå du e fattig");
+};
 
-function buyLaptop() {}
+laptopsElement.addEventListener("change", handleLaptopMenuChange);
+buyBtn.addEventListener("click", handleBuyLaptop);
