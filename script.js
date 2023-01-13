@@ -12,12 +12,16 @@ const salaryToShow = document.getElementById("salary");
 
 const laptopsElement = document.getElementById("laptops");
 const featuresElement = document.getElementById("features");
+const titleElement = document.getElementById("laptopTitle");
+const textElement = document.getElementById("laptopDescription");
+const priceElement = document.getElementById("laptopPrice");
 
 const loanBtn = document.getElementById("loanBtn");
 const loanBtnDiv = document.getElementById("loanBtnDiv");
 const repayLoanBtn = document.getElementById("repayLoanBtn");
 const bankBtn = document.getElementById("bankBtn");
 const workBtn = document.getElementById("workBtn");
+const buyBtn = document.getElementById("buyBtn");
 
 balance.innerText = balanceValue;
 salaryToShow.innerHTML = salary;
@@ -40,6 +44,11 @@ bankBtn.addEventListener("click", function () {
 
 workBtn.addEventListener("click", function () {
   getSalaryFromWork();
+});
+
+buyBtn.addEventListener("click", function () {
+  buyLaptop();
+  console.log("köp knapp");
 });
 
 function getLoan() {
@@ -94,6 +103,9 @@ fetch("https://hickory-quilled-actress.glitch.me/computers")
 const addLaptopsToMenu = (laptops) => {
   laptops.forEach((x) => addLaptopToMenu(x));
   featuresElement.innerText = laptops[0].specs;
+  titleElement.innerText = laptops[0].title;
+  textElement.innerText = laptops[0].description;
+  priceElement.innerText = laptops[0].price;
 };
 
 const addLaptopToMenu = (laptop) => {
@@ -106,6 +118,11 @@ const addLaptopToMenu = (laptop) => {
 const handleLaptopMenuChange = (e) => {
   const selectedLaptop = laptops[e.target.selectedIndex];
   featuresElement.innerText = selectedLaptop.specs;
+  titleElement.innerText = selectedLaptop.title;
+  textElement.innerText = selectedLaptop.description;
+  priceElement.innerText = selectedLaptop.price;
 };
 
 laptopsElement.addEventListener("change", handleLaptopMenuChange);
+
+function buyLaptop() {}
