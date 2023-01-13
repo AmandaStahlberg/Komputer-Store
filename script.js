@@ -2,18 +2,22 @@ let loan = 0;
 let balanceValue = 200;
 let hasLoan = false;
 let salary = 0;
+let laptops = [];
 
-let balance = document.getElementById("balance");
-let loanDiv = document.getElementById("loanDiv");
-let repayLoanDiv = document.getElementById("repayLoanDiv");
-let loanToPay = document.getElementById("loan");
-let salaryToShow = document.getElementById("salary");
+const loanDiv = document.getElementById("loanDiv");
+const balance = document.getElementById("balance");
+const repayLoanDiv = document.getElementById("repayLoanDiv");
+const loanToPay = document.getElementById("loan");
+const salaryToShow = document.getElementById("salary");
 
-let loanBtn = document.getElementById("loanBtn");
-let loanBtnDiv = document.getElementById("loanBtnDiv");
-let repayLoanBtn = document.getElementById("repayLoanBtn");
-let bankBtn = document.getElementById("bankBtn");
-let workBtn = document.getElementById("workBtn");
+const laptopsElement = document.getElementById("laptops");
+const featuresElement = document.getElementById("features");
+
+const loanBtn = document.getElementById("loanBtn");
+const loanBtnDiv = document.getElementById("loanBtnDiv");
+const repayLoanBtn = document.getElementById("repayLoanBtn");
+const bankBtn = document.getElementById("bankBtn");
+const workBtn = document.getElementById("workBtn");
 
 balance.innerText = balanceValue;
 salaryToShow.innerHTML = salary;
@@ -32,9 +36,6 @@ repayLoanBtn.addEventListener("click", function () {
 
 bankBtn.addEventListener("click", function () {
   transferMoneyToBalance();
-  console.log("bankBtn");
-  console.log(balanceValue);
-  console.log(salary);
 });
 
 workBtn.addEventListener("click", function () {
@@ -43,8 +44,7 @@ workBtn.addEventListener("click", function () {
 
 function getLoan() {
   loan = prompt("Fill in the amount you want to have?");
-  console.log(loan);
-  console.log(balanceValue);
+
   if (hasLoan == false && loan < balanceValue) {
     balance.innerHTML = Number(loan) + Number(balanceValue);
     balanceValue = loan;
@@ -74,7 +74,7 @@ function transferMoneyToBalance() {
     salaryToShow.innerHTML = salary;
   } else {
     let moneyToLoan = salary * 0.1;
-    loan = Number(loan) + Number(moneyToLoan);
+    loan = Number(loan) - Number(moneyToLoan);
     loanToPay.innerHTML = loan;
 
     let moneyToBalance = salary * 0.9;
@@ -85,3 +85,27 @@ function transferMoneyToBalance() {
     salaryToShow.innerHTML = salary;
   }
 }
+
+fetch("https://hickory-quilled-actress.glitch.me/computers")
+  .then((response) => response.json())
+  .then((data) => (laptops = data))
+  .then((laptops) => addLaptopsToMenu(laptops));
+
+const addLaptopsToMenu = (laptops) => {
+  laptops.forEach((x) => addLaptopToMenu(x));
+  featuresElement.innerText = laptops[0].specs;
+};
+
+const addLaptopToMenu = (laptop) => {
+  const laptopElement = document.createElement("option");
+  laptopElement.value = laptop.id;
+  laptopElement.appendChild(document.createTextNode(laptop.title));
+  laptopsElement.appendChild(laptopElement);
+};
+
+const handleLaptopMenuChange = (e) => {
+  const selectedLaptop = laptops[e.target.selectedIndex];
+  featuresElement.innerText = selectedLaptop.specs;
+};
+
+laptopsElement.addEventListener("change", handleLaptopMenuChange);

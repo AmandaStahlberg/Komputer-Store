@@ -59,12 +59,17 @@ button:hover {
 
 .laptop-view {
     background-color: blue;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 10px;
     border: 1px solid rgba(128, 128, 128, 0.263);
 
     background-color: rgb(228, 228, 228);
 
+}
+
+.descriptionDiv {
+    max-width: 500px;
+    padding: 0 2rem;
 }
 
 .card {
