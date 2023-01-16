@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Komputer Store</title>
     <script defer src="script.js"></script>
 
     <link
@@ -14,75 +14,94 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/flex.css" />
     <link rel="stylesheet" href="styles/colors.css" />
+    <link rel="stylesheet" href="styles/buttons.css" />
+    <link rel="stylesheet" href="styles/mq.css" />
   </head>
   <body class="flex center-center">
-    <header class="flex align-center">
-      <h1>Komputer Store</h1>
+    <header class="flex align-center space-between">
+      <div class="logoDiv">
+        <img src="./images/logo-green.png" alt="" />
+      </div>
+      <div><img src="./images/Logotype-white.png" alt="" /></div>
+      <div></div>
     </header>
     <main class="flex flex-column">
-      <div class="cardholder flex flex-wrap space-between">
-        <div class="card flex flex-column">
-          <h4>Joe Banker</h4>
-          <div class="flex space-between">
-            <p>balance</p>
-            <span class="flex">
-              <p id="balance"></p>
-              <p>&nbsp;Kr</p>
-            </span>
+      <div class="cardholder flex space-between">
+        <div class="card flex justify-center">
+          <div class="cardContent flex flex-column">
+            <h4>JOE BANKER</h4>
+            <div class="flex space-between">
+              <p>Total:</p>
+              <span class="flex">
+                <p id="balance"></p>
+                <p>&nbsp;Kr</p>
+              </span>
+            </div>
+            <div id="loanDiv" class="flex space-between">
+              <p>loan</p>
+              <span class="flex">
+                <p id="loan"></p>
+                <p>&nbsp;Kr</p>
+              </span>
+            </div>
+            <div id="repayLoanDiv" class="flex justify-center flex-end h-100">
+              <button id="repayLoanBtn" class="w-100 green-btn">
+                REPAY LOAN
+              </button>
+            </div>
+            <div id="loanBtnDiv" class="flex justify-center flex-end h-100">
+              <button id="loanBtn" class="w-100 green-border-btn">
+                GET A LOAN
+              </button>
+            </div>
           </div>
-          <div id="loanDiv" class="flex space-between">
-            <p>loan</p>
-            <span class="flex">
-              <p id="loan"></p>
-              <p>&nbsp;Kr</p>
-            </span>
-          </div>
-          <div id="repayLoanDiv" class="flex justify-center flex-end h-100">
-            <button id="repayLoanBtn" class="w-100 bg-pink">Repay loan</button>
-          </div>
-          <div id="loanBtnDiv" class="flex justify-center flex-end h-100">
-            <button id="loanBtn" class="w-100 bg-green">Get a loan</button>
-          </div>
-        </div>
 
-        <div class="card flex flex-column">
-          <h4>Work</h4>
-          <div class="flex space-between">
-            <p>pay</p>
-            <span class="flex">
-              <p id="salary"></p>
-              <p>&nbsp;kr</p>
-            </span>
-          </div>
-          <div class="flex space-between flex-end h-100">
-            <button id="bankBtn" class="bg-yellow">Bank</button>
-            <button id="workBtn" class="bg-blue text-white">Work</button>
+          <div class="cardContent flex flex-column">
+            <h4>WORK</h4>
+            <div class="flex space-between">
+              <p>pay</p>
+              <span class="flex">
+                <p id="salary"></p>
+                <p>&nbsp;kr</p>
+              </span>
+            </div>
+            <div class="flex space-between flex-end h-100">
+              <button id="bankBtn" class="pink-btn">Bank</button>
+              <button id="workBtn" class="purple-border-btn text-white">
+                Work
+              </button>
+            </div>
           </div>
         </div>
 
         <div class="card">
-          <h4>Laptops</h4>
+          <h4>LAPTOPS</h4>
 
-          <select class="w-100" name="laptops" id="laptops"></select>
+          <select name="laptops" id="laptops"></select>
 
           <div class="info">
-            <p>Features:</p>
+            <b>Features:</b>
             <p id="features"></p>
           </div>
         </div>
       </div>
-      <div class="laptop-view flex w-100">
-        <div id="imgContainer" class="img-div"></div>
-        <div class="descriptionDiv">
-          <h3 id="laptopTitle"></h3>
-          <p id="laptopDescription"></p>
-        </div>
-        <div>
-          <span class="flex">
-            <h4 id="laptopPrice"></h4>
-            <h4>&nbsp;kr</h4>
-          </span>
-          <button id="buyBtn" class="bg-lightBlue">BUY NOW</button>
+      <div class="laptopContainer">
+        <div class="laptop-view flex w-100 space-evenly align-center">
+          <div id="imgContainer" class="img-div"></div>
+          <div class="descriptionDiv">
+            <h3 id="laptopTitle"></h3>
+            <p id="laptopDescription"></p>
+            <br />
+            <b>Features:</b>
+            <p id="featuresDesc"></p>
+            <div>
+              <span class="flex">
+                <h4 id="laptopPrice"></h4>
+                <h4>&nbsp;kr</h4>
+              </span>
+              <button id="buyBtn" class="purple-btn">BUY NOW</button>
+            </div>
+          </div>
         </div>
       </div>
     </main>

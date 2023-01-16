@@ -12,6 +12,7 @@ const salaryToShow = document.getElementById("salary");
 
 const laptopsElement = document.getElementById("laptops");
 const featuresElement = document.getElementById("features");
+const featuresDescElement = document.getElementById("featuresDesc");
 const titleElement = document.getElementById("laptopTitle");
 const textElement = document.getElementById("laptopDescription");
 const priceElement = document.getElementById("laptopPrice");
@@ -55,7 +56,7 @@ function formatCurrency(num) {
 function getLoan() {
   loan = prompt("Fill in the amount you want to have?");
 
-  if (hasLoan == false && loan < balanceValue) {
+  if (hasLoan === false && loan < balanceValue) {
     balanceValue = Number(loan) + Number(balanceValue);
     balance.innerHTML = formatCurrency(balanceValue);
     console.log(balanceValue);
@@ -65,7 +66,7 @@ function getLoan() {
     loanDiv.style.display = "flex";
     repayLoanDiv.style.display = "flex";
     loanBtnDiv.style.display = "none";
-  } else if (hasLoan == true) {
+  } else if (hasLoan === true) {
     alert("You already have a loan");
   } else if (loan >= balanceValue) {
     alert("you cant borrow more money than you have");
@@ -89,15 +90,16 @@ function repayLoan() {
   } else if (salary < loan && salary != 0) {
     let updatedLoan = Number(loan) - Number(salary);
     balanceValue = Number(balanceValue) - Number(updatedLoan);
-    console.log(balanceValue);
     balance.innerText = formatCurrency(balanceValue);
     loanToPay.innerText = formatCurrency(updatedLoan);
     loan = updatedLoan;
     salaryToShow.innerHTML = formatCurrency(salary);
+  } else if (salary == 0) {
+    alert("Go to work and earn some money first");
   }
-  if (salary === 0) {
-    alert("Go to work and get some money to repay your loan!!");
-  }
+  // if (salary === 0) {
+  //   alert("Go to work and get some money to repay your loan!!");
+  // }
   if (loan === 0) {
     repayLoanDiv.style.display = "none";
     loanBtnDiv.style.display = "flex";
@@ -110,6 +112,7 @@ function repayLoan() {
 function getSalaryFromWork() {
   salary = Number(salary) + 100;
   salaryToShow.innerHTML = formatCurrency(salary);
+  console.log(salary);
 }
 
 function transferMoneyToBalance() {
@@ -144,6 +147,7 @@ fetch("https://hickory-quilled-actress.glitch.me/computers")
 const addLaptopsToMenu = (laptops) => {
   laptops.forEach((x) => addLaptopToMenu(x));
   featuresElement.innerText = laptops[0].specs;
+  featuresDescElement.innerText = laptops[0].specs;
   titleElement.innerText = laptops[0].title;
   textElement.innerText = laptops[0].description;
   priceElement.innerText = laptops[0].price;
@@ -161,12 +165,16 @@ const addLaptopToMenu = (laptop) => {
 const handleLaptopMenuChange = (e) => {
   const selectedLaptop = laptops[e.target.selectedIndex];
   featuresElement.innerText = selectedLaptop.specs;
+  featuresDescElement.innerText = selectedLaptop.specs;
   titleElement.innerText = selectedLaptop.title;
   textElement.innerText = selectedLaptop.description;
   priceElement.innerText = formatCurrency(selectedLaptop.price);
 
   imageElement.src = `https://hickory-quilled-actress.glitch.me/${selectedLaptop.image}`;
   imageContainer.append(imageElement);
+  imageElement.onerror = function () {
+    imageElement.src = "/images/laptoplogo.png";
+  };
 };
 
 const handleBuyLaptop = () => {

@@ -1,0 +1,20 @@
+@media only screen and (max-width: 768px) {
+    .cardholder {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .card {
+        flex-direction: column;
+        align-items: center;
+    }
+    .laptop-view {
+        flex-direction: column;
+    }
+}

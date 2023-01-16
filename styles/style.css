@@ -20,10 +20,10 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    height: 3rem;
-    background-color: rgb(53, 53, 53);
+    height: 4rem;
+    background-color: black;
     color: white;
-    padding: 0 0 0 4rem;
+    padding: 0 1rem;
 }
 h1 {
     font-weight: 200;
@@ -33,37 +33,33 @@ h1 {
 main {
     margin-top: 3rem;
     max-width: 1024px;
-    background-color: wihte;
+    background-color: white;
 
-    padding: 1.5rem 4rem;
+    padding: 1.5rem 0;
 }
 
-button {
-    border-radius: 5px;
-    border: 1px solid rgba(128, 128, 128, 0.263);
-
-    min-width: 3.5rem;
-    min-height: 1.7rem;
-
-    cursor: pointer;
+.logoDiv > img{
+    max-height: 3.6rem;
 }
 
-button:hover {
-    cursor: pointer;
-    opacity: 0.7;
-}
 
 .cardholder {
     margin-bottom: 2rem;
 }
 
-.laptop-view {
-    background-color: blue;
-    padding: 2rem;
-    border-radius: 10px;
-    border: 1px solid rgba(128, 128, 128, 0.263);
+.laptopContainer {
+    padding: 1rem;
+}
 
-    background-color: rgb(228, 228, 228);
+.laptop-view {
+    
+    background: #FFFFFF;
+    border: 1px solid #F7F7F7;
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 28px;
+    
+    padding: 1.5rem;
+
 
 }
 
@@ -72,17 +68,29 @@ button:hover {
     padding: 0 2rem;
 }
 
-.card {
-    min-height: 10rem;
-    width: 10rem;
-    border-radius: 10px;
-    padding: 1rem;
+.card{
+    background-color: #FFFFFF;
+    border: 1px solid #F7F7F7;
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 28px;
+    width: 50%;
 
-    background-color: rgb(239, 239, 239);
+    margin: 1rem;
+    padding: 1.5rem;
 }
 
-.card > p {
-    color: blue;
+.cardContent {
+    min-height: 10rem;
+    width: 10rem;
+
+    padding: 1rem;
+}
+
+.cardContent > div > P, .cardContent > div >span > P {
+    font-size: .8rem;
+}
+
+.card > div > p {
     font-size: .8rem;
 }
 
@@ -90,11 +98,20 @@ button:hover {
     height: 100%;
 }
 
+select {
+    background-color: white;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 20px;
+    height: 2rem;
+    padding: 0 1rem;
+}
+
 .img-div {
     max-width: 10rem; 
 }
 
 .img-div > img {
+    border-radius: 15px;
     object-fit: contain;
     object-position: center;
     max-width: 100%;
