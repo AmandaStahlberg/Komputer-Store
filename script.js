@@ -97,9 +97,7 @@ function repayLoan() {
   } else if (salary == 0) {
     alert("Go to work and earn some money first");
   }
-  // if (salary === 0) {
-  //   alert("Go to work and get some money to repay your loan!!");
-  // }
+
   if (loan === 0) {
     repayLoanDiv.style.display = "none";
     loanBtnDiv.style.display = "flex";

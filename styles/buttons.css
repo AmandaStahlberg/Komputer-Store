@@ -1,6 +1,7 @@
+/* CLASSES FOR BUTTONS */
+
 button {
     border-radius: 15px;
-
     min-width: 3.5rem;
     min-height: 1.7rem;
     border: none;
@@ -8,16 +9,13 @@ button {
     font-weight: 500;
 }
 
-
 button:hover {
     cursor: pointer;
-    /* opacity: 0.7; */
 }
 
 .green-border-btn {
     background-color: #FFFFFF;
     border: 2px solid #12ffb8;
-
     color: #12ffb8;
     min-width: 8rem;
 }
@@ -41,7 +39,7 @@ button:hover {
 .pink-btn {
     background: #FF62D3;
     color: white;
-    /* min-width:  */
+    min-width: 4rem;
 }
 
 .pink-btn:hover {
@@ -54,6 +52,7 @@ button:hover {
     background: #FFFFFF;
     border: 2px solid #874FFF;
     color: #874FFF;
+    min-width: 4rem;
 }
 
 .purple-border-btn:hover {

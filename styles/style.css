@@ -8,17 +8,15 @@
 .w-100 {
     width: 100%;
 }
-.w-80 {
-    width: 80%;
+.w-90 {
+    width: 90%;
 }
 .w-70 {
     width: 70%;
 }
-
 .h-100 {
     height: 100%;
 }
-
 /* --- */
 
 header {
@@ -45,10 +43,10 @@ main {
     padding: 1.5rem 0;
 }
 
+/* CLASSES */
 .logoDiv > img{
     max-height: 3.6rem;
 }
-
 
 .cardholder {
     margin-bottom: 2rem;
@@ -58,16 +56,12 @@ main {
     padding: 1rem;
 }
 
-.laptop-view {
-    
+.laptop-view { 
     background: #FFFFFF;
     border: 1px solid #F7F7F7;
     box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.25);
     border-radius: 28px;
-    
     padding: 1.5rem;
-
-
 }
 
 .descriptionDiv {
@@ -81,7 +75,7 @@ main {
     box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.25);
     border-radius: 28px;
     width: 50%;
-
+    
     margin: 1rem;
     padding: 1.5rem;
 }
@@ -90,7 +84,6 @@ main {
     min-height: 10rem;
     width: 10rem;
 
-    /* padding: 1rem; */
 }
 
 .cardContent > div > P, .cardContent > div >span > P {
