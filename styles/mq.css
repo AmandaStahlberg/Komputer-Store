@@ -1,3 +1,5 @@
+/* MEDIA QUERIES! DESKTOP FIRST! */
+
 @media only screen and (max-width: 768px) {
     .cardholder {
         flex-direction: column;
@@ -6,6 +8,9 @@
     .card {
         width: 90%;
         justify-content: space-evenly;
+    }
+    select {
+        height: 2rem;
     }
 }
 

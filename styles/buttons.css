@@ -3,10 +3,11 @@
 button {
     border-radius: 15px;
     min-width: 3.5rem;
-    min-height: 1.7rem;
+    min-height: 2rem;
     border: none;
     cursor: pointer;
     font-weight: 500;
+    margin-top: 2rem;
 }
 
 button:hover {
