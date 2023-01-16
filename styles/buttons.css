@@ -19,6 +19,7 @@ button:hover {
     border: 2px solid #12ffb8;
 
     color: #12ffb8;
+    min-width: 8rem;
 }
 
 .green-border-btn:hover {
@@ -30,6 +31,7 @@ button:hover {
     background-color: #12ffb8;
 
     color: white;
+    min-width: 8rem;
 }
 
 .green-btn:hover {
@@ -38,8 +40,8 @@ button:hover {
 
 .pink-btn {
     background: #FF62D3;
-    /* border-radius: 20px; */
     color: white;
+    /* min-width:  */
 }
 
 .pink-btn:hover {

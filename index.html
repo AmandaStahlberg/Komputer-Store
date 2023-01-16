@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Komputer Store</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
     <script defer src="script.js"></script>
 
     <link
@@ -27,21 +28,21 @@
     </header>
     <main class="flex flex-column">
       <div class="cardholder flex space-between">
-        <div class="card flex justify-center">
-          <div class="cardContent flex flex-column">
+        <div class="card flex justify-center space-evenly">
+          <div class="cardContent flex flex-column align-center">
             <h4>JOE BANKER</h4>
-            <div class="flex space-between">
+            <div class="flex space-between w-70">
               <p>Total:</p>
               <span class="flex">
                 <p id="balance"></p>
-                <p>&nbsp;Kr</p>
+                <p>&nbsp;SEK</p>
               </span>
             </div>
-            <div id="loanDiv" class="flex space-between">
-              <p>loan</p>
+            <div id="loanDiv" class="flex space-between w-70">
+              <p>Loan:</p>
               <span class="flex">
                 <p id="loan"></p>
-                <p>&nbsp;Kr</p>
+                <p>&nbsp;SEK</p>
               </span>
             </div>
             <div id="repayLoanDiv" class="flex justify-center flex-end h-100">
@@ -56,16 +57,16 @@
             </div>
           </div>
 
-          <div class="cardContent flex flex-column">
+          <div class="cardContent flex flex-column align-center">
             <h4>WORK</h4>
-            <div class="flex space-between">
-              <p>pay</p>
+            <div class="flex space-between w-70">
+              <p>Salary:</p>
               <span class="flex">
                 <p id="salary"></p>
-                <p>&nbsp;kr</p>
+                <p>&nbsp;SEK</p>
               </span>
             </div>
-            <div class="flex space-between flex-end h-100">
+            <div class="flex space-between flex-end h-100 w-80">
               <button id="bankBtn" class="pink-btn">Bank</button>
               <button id="workBtn" class="purple-border-btn text-white">
                 Work
@@ -74,12 +75,12 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card flex flex-column justify-center space-evenly">
           <h4>LAPTOPS</h4>
 
           <select name="laptops" id="laptops"></select>
 
-          <div class="info">
+          <div class="info flex flex-column justify-center h-100">
             <b>Features:</b>
             <p id="features"></p>
           </div>
@@ -97,7 +98,7 @@
             <div>
               <span class="flex">
                 <h4 id="laptopPrice"></h4>
-                <h4>&nbsp;kr</h4>
+                <h4>&nbsp;SEK</h4>
               </span>
               <button id="buyBtn" class="purple-btn">BUY NOW</button>
             </div>

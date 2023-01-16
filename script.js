@@ -181,7 +181,7 @@ const handleBuyLaptop = () => {
   const selectedLaptop = laptops[laptopsElement.selectedIndex].price;
   if (balanceValue >= selectedLaptop) {
     alert(
-      `You are now a happy owner of an excellent laptop! And I´m gonna steal ${selectedLaptop} kr from your bank account.`
+      `You are now a happy owner of an excellent laptop! And I´m gonna steal ${selectedLaptop} SEK from your bank account.`
     );
     balanceValue = Number(balanceValue) - Number(selectedLaptop);
     balance.innerHTML = formatCurrency(balanceValue);

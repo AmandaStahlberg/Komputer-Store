@@ -8,6 +8,12 @@
 .w-100 {
     width: 100%;
 }
+.w-80 {
+    width: 80%;
+}
+.w-70 {
+    width: 70%;
+}
 
 .h-100 {
     height: 100%;
@@ -25,9 +31,10 @@ header {
     color: white;
     padding: 0 1rem;
 }
-h1 {
-    font-weight: 200;
-    font-size: 1.5rem;
+
+
+h4, h3 {
+    padding: 0 0 .5rem 0;
 }
 
 main {
@@ -83,7 +90,7 @@ main {
     min-height: 10rem;
     width: 10rem;
 
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 .cardContent > div > P, .cardContent > div >span > P {
@@ -102,12 +109,13 @@ select {
     background-color: white;
     border: 1px solid rgb(150, 150, 150);
     border-radius: 20px;
-    height: 2rem;
+    height: 3rem;
     padding: 0 1rem;
+    max-width: 15rem;
 }
 
 .img-div {
-    max-width: 10rem; 
+    max-width: 15rem; 
 }
 
 .img-div > img {
