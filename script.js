@@ -89,16 +89,10 @@ function getLoan() {
 function repayLoan() {
   let loanToRemove = loan;
 
-  console.log(salary, "sal utanför");
-  console.log(balanceValue, "bal utanför");
-  console.log(loan, "loan utanför");
   if (salary === 0) {
     alert("Go to work and earn some money first");
   }
   if (salary >= loan) {
-    console.log("if", loan);
-    console.log(balanceValue, "balance");
-    console.log(salary, "sal");
     let moneyToAdd = Number(salary) - Number(loan);
     balanceValue = Number(balanceValue) - Number(loan);
     balanceValue = Number(balanceValue) + Number(moneyToAdd);
@@ -111,13 +105,11 @@ function repayLoan() {
     loanBtnDiv.style.display = "flex";
     loan = 0;
   } else if (salary < loan && salary !== 0) {
-    console.log("else");
     let moneyToRemove = Number(salary);
     balanceValue = Number(balanceValue) - moneyToRemove;
     loan = Number(loan) - Number(salary);
     salary = Number(salary) - moneyToRemove;
-    console.log(salary, "sal");
-    console.log(loan, "hej");
+
     loanToPay.innerText = formatCurrency(loan);
 
     balance.innerText = formatCurrency(balanceValue);
@@ -140,10 +132,6 @@ function getSalaryFromWork() {
 }
 
 function transferMoneyToBalance() {
-  console.log(salary, "salary");
-  console.log(loan, "loan");
-  console.log(balanceValue, "balance");
-
   if (loan === 0) {
     balanceValue = balanceValue + salary;
     balance.innerText = formatCurrency(balanceValue);
@@ -161,11 +149,10 @@ function transferMoneyToBalance() {
       loan = loan * -1;
       balanceValue = balanceValue + Number(loan);
       loan = 0;
-      console.log("hej", balanceValue);
     }
 
     salary = 0;
-    console.log(loan);
+
     balance.innerText = formatCurrency(balanceValue);
     loanToPay.innerText = formatCurrency(loan);
     salaryToShow.innerText = formatCurrency(salary);
