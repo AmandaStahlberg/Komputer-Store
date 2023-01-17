@@ -18,6 +18,7 @@ const textElement = document.getElementById("laptopDescription");
 const priceElement = document.getElementById("laptopPrice");
 const imageContainer = document.getElementById("imgContainer");
 let imageElement = document.createElement("img");
+let listElement = document.getElementById("list");
 
 const loanBtn = document.getElementById("loanBtn");
 const loanBtnDiv = document.getElementById("loanBtnDiv");
@@ -186,13 +187,21 @@ const addLaptopToMenu = (laptop) => {
 };
 
 const handleLaptopMenuChange = (e) => {
+  // let arr = [];
   const selectedLaptop = laptops[e.target.selectedIndex];
-  featuresElement.innerText = selectedLaptop.specs;
+  let arrOfSpecs = selectedLaptop.specs;
   featuresDescElement.innerText = selectedLaptop.specs;
+  featuresElement.innerText = selectedLaptop.specs;
   titleElement.innerText = selectedLaptop.title;
   textElement.innerText = selectedLaptop.description;
   priceElement.innerText = formatCurrency(selectedLaptop.price);
+  arrOfSpecs.forEach((item) => {
+    let li = document.createElement("li");
+    li.innerText = item;
+    listElement.appendChild(li);
+  });
 
+  console.log(selectedLaptop.specs);
   imageElement.src = `https://hickory-quilled-actress.glitch.me/${selectedLaptop.image}`;
   imageContainer.append(imageElement);
   imageElement.onerror = function () {
@@ -202,9 +211,10 @@ const handleLaptopMenuChange = (e) => {
 
 const handleBuyLaptop = () => {
   const selectedLaptop = laptops[laptopsElement.selectedIndex].price;
+  const selectedLaptopTitle = laptops[laptopsElement.selectedIndex].title;
   if (balanceValue >= selectedLaptop) {
     alert(
-      `You are now a happy owner of an excellent laptop! And I´m gonna steal ${selectedLaptop} SEK from your bank account.`
+      `You are now a happy owner of an ${selectedLaptopTitle}! And I´m gonna steal ${selectedLaptop} SEK from your bank account.`
     );
     balanceValue = Number(balanceValue) - Number(selectedLaptop);
     balance.innerText = formatCurrency(balanceValue);
