@@ -27,22 +27,25 @@ const workBtn = document.getElementById("workBtn");
 const buyBtn = document.getElementById("buyBtn");
 
 balance.innerText = formatCurrency(balanceValue);
-salaryToShow.innerHTML = formatCurrency(salary);
-loanToPay.innerHTML = formatCurrency(loan);
+salaryToShow.innerText = formatCurrency(salary);
+loanToPay.innerText = formatCurrency(loan);
 
 loanDiv.style.display = "none";
 repayLoanDiv.style.display = "none";
 
 loanBtn.addEventListener("click", function () {
   getLoan();
+  checkIfLoan();
 });
 
 repayLoanBtn.addEventListener("click", function () {
   repayLoan();
+  checkIfLoan();
 });
 
 bankBtn.addEventListener("click", function () {
   transferMoneyToBalance();
+  checkIfLoan();
 });
 
 workBtn.addEventListener("click", function () {
@@ -53,33 +56,39 @@ function formatCurrency(num) {
   return new Intl.NumberFormat().format(num);
 }
 
-// function getLoan() {
-//   loan = prompt("Fill in the amount you want to have?");
-
-//   if (hasLoan === false && loan < balanceValue) {
-//     balanceValue = Number(loan) + Number(balanceValue);
-//     balance.innerHTML = formatCurrency(balanceValue);
-//     console.log(balanceValue);
-//     hasLoan = true;
-//     loanToPay.innerHTML = formatCurrency(loan);
-//     loanDiv.style.display = "flex";
-//     repayLoanDiv.style.display = "flex";
-//     loanBtnDiv.style.display = "none";
-//   } else if (hasLoan === true) {
-//     alert("You already have a loan");
-//   } else if (loan >= balanceValue) {
-//     alert("you cant borrow more money than you have");
-//   }
-//   if ((loan = "" || loan === null)) {
-//     loanDiv.style.display = "none";
-//     repayLoanDiv.style.display = "none";
-//     loanBtnDiv.style.display = "flex";
-//   }
-// }
+function getLoan() {
+  loan = prompt("Fill in the amount you want to have?");
+  if (loan === "") {
+    // user pressed OK, but the input field was empty
+    loanDiv.style.display = "none";
+    repayLoanDiv.style.display = "none";
+    loanBtnDiv.style.display = "flex";
+  } else if (loan) {
+    // user typed something and hit OK
+    if (hasLoan === false && loan < balanceValue) {
+      balanceValue = Number(balanceValue) + Number(loan);
+      balance.innerText = formatCurrency(balanceValue);
+      hasLoan = true;
+      loanToPay.innerText = formatCurrency(loan);
+      loanDiv.style.display = "flex";
+      repayLoanDiv.style.display = "flex";
+      loanBtnDiv.style.display = "none";
+    } else if (hasLoan === true) {
+      alert("You already have a loan");
+    } else if (loan >= balanceValue) {
+      alert("you cant borrow more money than you have");
+    }
+  } else {
+    // user hit cancel
+    loanDiv.style.display = "none";
+    repayLoanDiv.style.display = "none";
+    loanBtnDiv.style.display = "flex";
+  }
+}
 
 function repayLoan() {
   let loanToRemove = loan;
-  // let updatedLoan = 0;
+
   console.log(salary, "sal utanför");
   console.log(balanceValue, "bal utanför");
   console.log(loan, "loan utanför");
@@ -97,7 +106,7 @@ function repayLoan() {
     loanToRemove = 0;
     loanToPay.innerText = formatCurrency(loanToRemove);
     balance.innerText = formatCurrency(balanceValue);
-    salaryToShow.innerHTML = formatCurrency(salary);
+    salaryToShow.innerText = formatCurrency(salary);
     repayLoanDiv.style.display = "none";
     loanBtnDiv.style.display = "flex";
     loan = 0;
@@ -113,92 +122,53 @@ function repayLoan() {
 
     balance.innerText = formatCurrency(balanceValue);
 
-    salaryToShow.innerHTML = formatCurrency(salary);
+    salaryToShow.innerText = formatCurrency(salary);
   }
-
+}
+function checkIfLoan() {
   if (loan === 0) {
     repayLoanDiv.style.display = "none";
     loanBtnDiv.style.display = "flex";
     loanDiv.style.display = "none";
     hasLoan = false;
   }
-  console.log(hasLoan, "loan state in funk");
 }
-console.log(hasLoan, "loan state");
 
 function getSalaryFromWork() {
   salary = Number(salary) + 100;
-  salaryToShow.innerHTML = formatCurrency(salary);
-  console.log(salary);
-}
-
-// function transferMoneyToBalance() {
-//   if (!loan) {
-//     balanceValue += salary;
-//     balance.innerHTML = formatCurrency(balanceValue);
-
-//     salary = 0;
-//     salaryToShow.innerHTML = formatCurrency(salary);
-//   } else {
-//     let moneyToLoan = salary * 0.1;
-//     loan = Number(loan) - Number(moneyToLoan);
-//     loanToPay.innerHTML = formatCurrency(loan);
-//     console.log(loan, "loan");
-
-//     let moneyToBalance = salary * 0.9;
-//     balanceValue = Number(balanceValue) + Number(moneyToBalance);
-//     balance.innerHTML = formatCurrency(balanceValue);
-//     console.log(balanceValue, "baöancevalue");
-
-//     salary = 0;
-//     salaryToShow.innerHTML = formatCurrency(salary);
-//   }
-// }
-
-function getLoan() {
-  loan = prompt("Fill in the amount you want to have?");
-  console.log(loan);
-  console.log(balanceValue);
-  if (hasLoan == false && loan < balanceValue) {
-    balanceValue = Number(balanceValue) + Number(loan);
-    balance.innerHTML = Number(balanceValue);
-    hasLoan = true;
-    loanToPay.innerHTML = loan;
-    loanDiv.style.display = "flex";
-    repayLoanDiv.style.display = "flex";
-    loanBtnDiv.style.display = "none";
-  } else if (hasLoan == true) {
-    alert("You already have a loan");
-  } else if (loan >= balanceValue) {
-    alert("you cant borrow more money than you have");
-  }
+  salaryToShow.innerText = formatCurrency(salary);
 }
 
 function transferMoneyToBalance() {
-  console.log(salary);
-  console.log(loan);
-  console.log(balanceValue);
-  // if (salary == 0) {
-  //   alert("go to work");
-  // }
+  console.log(salary, "salary");
+  console.log(loan, "loan");
+  console.log(balanceValue, "balance");
+
   if (loan === 0) {
     balanceValue = balanceValue + salary;
-    balance.innerHTML = balanceValue;
+    balance.innerText = formatCurrency(balanceValue);
 
     salary = 0;
-    salaryToShow.innerHTML = salary;
+    salaryToShow.innerText = formatCurrency(salary);
   } else {
-    console.log(balanceValue, "in else");
     let moneyToLoan = salary * 0.1;
-    loan = Number(loan) + Number(moneyToLoan);
-    loanToPay.innerHTML = loan;
+    loan = Number(loan) - Number(moneyToLoan);
 
     let moneyToBalance = salary * 0.9;
     balanceValue = Number(balanceValue) + Number(moneyToBalance);
-    balance.innerHTML = balanceValue;
+
+    if (loan < 0) {
+      loan = loan * -1;
+      balanceValue = balanceValue + Number(loan);
+      loan = 0;
+      console.log("hej", balanceValue);
+    }
 
     salary = 0;
-    salaryToShow.innerHTML = salary;
+    console.log(loan);
+    balance.innerText = formatCurrency(balanceValue);
+    loanToPay.innerText = formatCurrency(loan);
+    salaryToShow.innerText = formatCurrency(salary);
   }
 }
 
@@ -250,7 +220,7 @@ const handleBuyLaptop = () => {
       `You are now a happy owner of an excellent laptop! And I´m gonna steal ${selectedLaptop} SEK from your bank account.`
     );
     balanceValue = Number(balanceValue) - Number(selectedLaptop);
-    balance.innerHTML = formatCurrency(balanceValue);
+    balance.innerText = formatCurrency(balanceValue);
   } else alert("Hey, you can´t afford that! Go and get some more money!");
 };
 
