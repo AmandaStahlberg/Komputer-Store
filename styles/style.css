@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     font-family: 'Roboto', sans-serif;
+
 }
 
 /* HEIGHT AND WIDTH CLASSES */
@@ -34,12 +35,12 @@ header {
 h4, h3 {
     padding: 0 0 .5rem 0;
 }
-
+body {
+    background-color: #fafffd;;
+}
 main {
     margin-top: 3rem;
     max-width: 1024px;
-    background-color: white;
-
     padding: 1.5rem 0;
 }
 
@@ -118,3 +119,10 @@ select {
     max-width: 100%;
     height: auto;
 }
+
+.priceAndBuyBtn {
+    padding-top: 1rem;
+    width: fit-content;
+}
+
+
