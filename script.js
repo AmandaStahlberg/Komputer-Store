@@ -176,7 +176,7 @@ const addLaptopsToMenu = (laptops) => {
   priceElement.innerText = laptops[0].price;
   imageElement.src = `https://hickory-quilled-actress.glitch.me/${laptops[0].image}`;
   imageContainer.appendChild(imageElement);
-  // createListOfSpecs(laptops[0].specs);
+  createListOfSpecs(laptops[0].specs);
 };
 
 const addLaptopToMenu = (laptop) => {
@@ -195,17 +195,11 @@ const handleLaptopMenuChange = (e) => {
   priceElement.innerText = formatCurrency(selectedLaptop.price);
   createListOfSpecs(arrOfSpecs);
 
+  imageElement.onerror = function () {
+    imageElement.src = "/images/laptoplogo.png";
+  };
   imageElement.src = `https://hickory-quilled-actress.glitch.me/${selectedLaptop.image}`;
   imageContainer.append(imageElement);
-  if (
-    (imageElement.src = `https://hickory-quilled-actress.glitch.me/assets/images5.jpg`)
-  )
-    imageElement.src = `https://hickory-quilled-actress.glitch.me/assets/images/5.png`;
-  imageElement.onerror = function () {
-    console.log(imageElement.src);
-    imageElement.src = "/images/laptoplogo.png";
-    return;
-  };
 };
 
 const handleBuyLaptop = () => {
