@@ -125,4 +125,8 @@ select {
     width: fit-content;
 }
 
-
+ul {
+    padding-left: 0;
+    list-style: none;
+    font-size: .7rem;
+}

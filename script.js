@@ -170,13 +170,13 @@ fetch("https://hickory-quilled-actress.glitch.me/computers")
 
 const addLaptopsToMenu = (laptops) => {
   laptops.forEach((x) => addLaptopToMenu(x));
-  featuresElement.innerText = laptops[0].specs;
   featuresDescElement.innerText = laptops[0].specs;
   titleElement.innerText = laptops[0].title;
   textElement.innerText = laptops[0].description;
   priceElement.innerText = laptops[0].price;
   imageElement.src = `https://hickory-quilled-actress.glitch.me/${laptops[0].image}`;
   imageContainer.append(imageElement);
+  createListOfSpecs(laptops[0].specs);
 };
 
 const addLaptopToMenu = (laptop) => {
@@ -187,21 +187,14 @@ const addLaptopToMenu = (laptop) => {
 };
 
 const handleLaptopMenuChange = (e) => {
-  // let arr = [];
   const selectedLaptop = laptops[e.target.selectedIndex];
   let arrOfSpecs = selectedLaptop.specs;
   featuresDescElement.innerText = selectedLaptop.specs;
-  featuresElement.innerText = selectedLaptop.specs;
   titleElement.innerText = selectedLaptop.title;
   textElement.innerText = selectedLaptop.description;
   priceElement.innerText = formatCurrency(selectedLaptop.price);
-  arrOfSpecs.forEach((item) => {
-    let li = document.createElement("li");
-    li.innerText = item;
-    listElement.appendChild(li);
-  });
+  createListOfSpecs(arrOfSpecs);
 
-  console.log(selectedLaptop.specs);
   imageElement.src = `https://hickory-quilled-actress.glitch.me/${selectedLaptop.image}`;
   imageContainer.append(imageElement);
   imageElement.onerror = function () {
@@ -223,3 +216,12 @@ const handleBuyLaptop = () => {
 
 laptopsElement.addEventListener("change", handleLaptopMenuChange);
 buyBtn.addEventListener("click", handleBuyLaptop);
+
+function createListOfSpecs(arr) {
+  listElement.innerHTML = "";
+  arr.forEach((item) => {
+    let li = document.createElement("li");
+    li.innerText = item;
+    listElement.appendChild(li);
+  });
+}
