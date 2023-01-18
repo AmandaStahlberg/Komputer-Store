@@ -1,9 +1,11 @@
+// Create variables and get them a start value
 let loan = 0;
 let balanceValue = 2000;
 let hasLoan = false;
 let salary = 0;
 let laptops = [];
 
+// Get elements from HTML and put them in variables
 const loanDiv = document.getElementById("loanDiv");
 const balance = document.getElementById("balance");
 const repayLoanDiv = document.getElementById("repayLoanDiv");
@@ -27,13 +29,16 @@ const bankBtn = document.getElementById("bankBtn");
 const workBtn = document.getElementById("workBtn");
 const buyBtn = document.getElementById("buyBtn");
 
+// Give elements value to show on page from start
 balance.innerText = formatCurrency(balanceValue);
 salaryToShow.innerText = formatCurrency(salary);
 loanToPay.innerText = formatCurrency(loan);
 
+// Hide div and btn for loan
 loanDiv.style.display = "none";
 repayLoanDiv.style.display = "none";
 
+// Add click events on btns
 loanBtn.addEventListener("click", function () {
   getLoan();
   checkIfLoan();
@@ -53,10 +58,14 @@ workBtn.addEventListener("click", function () {
   getSalaryFromWork();
 });
 
+// Function to format number to right currency format
 function formatCurrency(num) {
   return new Intl.NumberFormat().format(num);
 }
 
+// Function to get loan btn
+// check if i can get loan
+// and get a loan if I can
 function getLoan() {
   loan = prompt("Fill in the amount you want to have?");
   if (loan === "") {
@@ -87,6 +96,9 @@ function getLoan() {
   }
 }
 
+// Function to repay loan btn
+// check if I have salary to payback loan or not
+// if not alert "go to work"
 function repayLoan() {
   let loanToRemove = loan;
 
@@ -118,6 +130,9 @@ function repayLoan() {
     salaryToShow.innerText = formatCurrency(salary);
   }
 }
+
+// Function to hide repay loan btn and loan div if loan === 0
+// and make hasLoan false
 function checkIfLoan() {
   if (loan === 0) {
     repayLoanDiv.style.display = "none";
@@ -127,11 +142,15 @@ function checkIfLoan() {
   }
 }
 
+// Function to get money in to salary when WORK btn is clicked
 function getSalaryFromWork() {
   salary = Number(salary) + 100;
   salaryToShow.innerText = formatCurrency(salary);
 }
 
+// Function to transfer money from salary to balance and loan
+// and calculate that 10% is moved to loan (if I have a loan) else transfer it to only balance
+// and calculate that 90% is moved to balance (if I have a loan) else transfer all to balance
 function transferMoneyToBalance() {
   if (loan === 0) {
     balanceValue = balanceValue + salary;
@@ -160,6 +179,7 @@ function transferMoneyToBalance() {
   }
 }
 
+// Fetch laptops from API
 fetch("https://hickory-quilled-actress.glitch.me/computers")
   .then((response) => response.json())
   .then((data) => (laptops = data))
@@ -168,6 +188,7 @@ fetch("https://hickory-quilled-actress.glitch.me/computers")
     console.log("something went wrong", error);
   });
 
+// Add laptops to show laptops view container in html
 const addLaptopsToMenu = (laptops) => {
   laptops.forEach((x) => addLaptopToMenu(x));
   featuresDescElement.innerText = laptops[0].specs;
@@ -179,6 +200,7 @@ const addLaptopsToMenu = (laptops) => {
   createListOfSpecs(laptops[0].specs);
 };
 
+// Create element with laptop to select menu
 const addLaptopToMenu = (laptop) => {
   const laptopElement = document.createElement("option");
   laptopElement.value = laptop.id;
@@ -186,6 +208,7 @@ const addLaptopToMenu = (laptop) => {
   laptopsElement.appendChild(laptopElement);
 };
 
+// Handle change when option in select menu is changed
 const handleLaptopMenuChange = (e) => {
   const selectedLaptop = laptops[e.target.selectedIndex];
   let arrOfSpecs = selectedLaptop.specs;
@@ -202,6 +225,20 @@ const handleLaptopMenuChange = (e) => {
   imageContainer.append(imageElement);
 };
 
+// Function to create a list element to show the right features of the laptops
+function createListOfSpecs(arr) {
+  listElement.innerHTML = "";
+  arr.forEach((item) => {
+    let li = document.createElement("li");
+    li.innerText = item;
+    listElement.appendChild(li);
+  });
+}
+
+// Function to buy btn
+// Check if I have enough money in balance or not
+// If not alert 'get more money'
+// If get money from balance and alert that "you have but the computer"
 const handleBuyLaptop = () => {
   const selectedLaptop = laptops[laptopsElement.selectedIndex].price;
   const selectedLaptopTitle = laptops[laptopsElement.selectedIndex].title;
@@ -214,14 +251,8 @@ const handleBuyLaptop = () => {
   } else alert("Hey, you can´t afford that! Go and get some more money!");
 };
 
+// Add onChange event on select element
 laptopsElement.addEventListener("change", handleLaptopMenuChange);
-buyBtn.addEventListener("click", handleBuyLaptop);
 
-function createListOfSpecs(arr) {
-  listElement.innerHTML = "";
-  arr.forEach((item) => {
-    let li = document.createElement("li");
-    li.innerText = item;
-    listElement.appendChild(li);
-  });
-}
+// Add onclick event on buy btn
+buyBtn.addEventListener("click", handleBuyLaptop);
