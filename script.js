@@ -196,7 +196,7 @@ const handleLaptopMenuChange = (e) => {
   createListOfSpecs(arrOfSpecs);
 
   imageElement.onerror = function () {
-    imageElement.src = "/images/laptoplogo.png";
+    imageElement.src = "Komputer-Store/images/laptoplogo.png";
   };
   imageElement.src = `https://hickory-quilled-actress.glitch.me/${selectedLaptop.image}`;
   imageContainer.append(imageElement);
