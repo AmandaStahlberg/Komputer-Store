@@ -196,10 +196,10 @@ const handleLaptopMenuChange = (e) => {
   createListOfSpecs(arrOfSpecs);
 
   imageElement.src = `https://hickory-quilled-actress.glitch.me/${selectedLaptop.image}`;
-  imageContainer.append(imageElement);
   imageElement.onerror = function () {
     imageElement.src = "/images/laptoplogo.png";
   };
+  imageContainer.append(imageElement);
 };
 
 const handleBuyLaptop = () => {
