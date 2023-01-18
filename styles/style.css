@@ -31,6 +31,9 @@ header {
     padding: 0 1rem;
 }
 
+header > div:nth-child(3) {
+    width: 3.8rem;
+}
 
 h4, h3 {
     padding: 0 0 .5rem 0;
@@ -71,6 +74,15 @@ main {
     padding: 0 2rem;
 }
 
+.descriptionDiv > div > p {
+    font-size: .9rem;
+}
+
+#laptopTitle {
+    margin: 0;
+    padding: 0;
+}
+
 .card{
     background-color: #FFFFFF;
     border: 1px solid #F7F7F7;
@@ -89,6 +101,9 @@ main {
 
 }
 
+.cardContent > h4 {
+    padding-bottom: 1rem;
+}
 .cardContent > div > P, .cardContent > div >span > P {
     font-size: .8rem;
 }
@@ -108,7 +123,10 @@ select {
     height: 3rem;
     padding: 0 1rem;
     max-width: 15rem;
+    color: black;
 }
+
+
 
 .img-div {
     max-width: 15rem; 
