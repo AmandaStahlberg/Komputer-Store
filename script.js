@@ -68,6 +68,8 @@ function formatCurrency(num) {
 // and get a loan if I can
 function getLoan() {
   loan = prompt("Fill in the amount you want to have?");
+  console.log(loan, "loan");
+  console.log(balanceValue, "bal");
   if (loan === "") {
     // user pressed OK, but the input field was empty
     loanDiv.style.display = "none";
@@ -75,7 +77,10 @@ function getLoan() {
     loanBtnDiv.style.display = "flex";
   } else if (loan) {
     // user typed something and hit OK
-    if (hasLoan === false && loan < balanceValue) {
+    if (loan >= balanceValue / 2) {
+      console.log(balanceValue);
+      alert("You cant loan more than half of the amount of balance you have");
+    } else if (hasLoan === false && loan < balanceValue) {
       balanceValue = Number(balanceValue) + Number(loan);
       balance.innerText = formatCurrency(balanceValue);
       hasLoan = true;
@@ -86,7 +91,7 @@ function getLoan() {
     } else if (hasLoan === true) {
       alert("You already have a loan");
     } else if (loan >= balanceValue) {
-      alert("you cant borrow more money than you have");
+      alert("You cant loan more money than you have");
     }
   } else {
     // user hit cancel
@@ -105,7 +110,7 @@ function repayLoan() {
   if (salary === 0) {
     alert("Go to work and earn some money first");
   }
-  if (salary >= loan) {
+  if (salary == loan) {
     let moneyToAdd = Number(salary) - Number(loan);
     balanceValue = Number(balanceValue) - Number(loan);
     balanceValue = Number(balanceValue) + Number(moneyToAdd);
@@ -117,6 +122,14 @@ function repayLoan() {
     repayLoanDiv.style.display = "none";
     loanBtnDiv.style.display = "flex";
     loan = 0;
+  } else if (salary > loan) {
+    salary = Number(salary) - Number(loan);
+    balanceValue = Number(balanceValue) + Number(salary);
+    loan = 0;
+    salary = 0;
+    loanToPay.innerText = formatCurrency(loan);
+    balance.innerText = formatCurrency(balanceValue);
+    salaryToShow.innerText = formatCurrency(salary);
   } else if (salary < loan && salary !== 0) {
     let moneyToRemove = Number(salary);
     balanceValue = Number(balanceValue) - moneyToRemove;
@@ -185,7 +198,7 @@ fetch("https://hickory-quilled-actress.glitch.me/computers")
   .then((data) => (laptops = data))
   .then((laptops) => addLaptopsToMenu(laptops))
   .catch((error) => {
-    console.log("something went wrong", error);
+    console.log("Something went wrong", error);
   });
 
 // Add laptops to show laptops view container in html
