@@ -68,8 +68,6 @@ function formatCurrency(num) {
 // and get a loan if I can
 function getLoan() {
   loan = prompt("Fill in the amount you want to have?");
-  console.log(loan, "loan");
-  console.log(balanceValue, "bal");
   if (loan === "") {
     // user pressed OK, but the input field was empty
     loanDiv.style.display = "none";
@@ -78,8 +76,7 @@ function getLoan() {
   } else if (loan) {
     // user typed something and hit OK
     if (loan >= balanceValue / 2) {
-      console.log(balanceValue);
-      alert("You cant loan more than half of the amount of balance you have");
+      alert("You can't loan more than half of the amount of balance you have.");
     } else if (hasLoan === false && loan < balanceValue) {
       balanceValue = Number(balanceValue) + Number(loan);
       balance.innerText = formatCurrency(balanceValue);
@@ -89,9 +86,9 @@ function getLoan() {
       repayLoanDiv.style.display = "flex";
       loanBtnDiv.style.display = "none";
     } else if (hasLoan === true) {
-      alert("You already have a loan");
+      alert("You already have a loan.");
     } else if (loan >= balanceValue) {
-      alert("You cant loan more money than you have");
+      alert("You cant loan more money than you have.");
     }
   } else {
     // user hit cancel
@@ -108,7 +105,7 @@ function repayLoan() {
   let loanToRemove = loan;
 
   if (salary === 0) {
-    alert("Go to work and earn some money first");
+    alert("Go to work and earn some money first.");
   }
   if (salary == loan) {
     let moneyToAdd = Number(salary) - Number(loan);
