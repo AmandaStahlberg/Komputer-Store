@@ -9,4 +9,4 @@ The assignment was to create a website where you can:
 * get 100 SEK everytime you work
 * transfer money from wallet to balance, if you have a loan 10% goes to loan and the rest to balance
 
-[Komputer Store](https://amandastahlberg.github.io/Komputer-Store/)
+Link to my [Komputer Store](https://amandastahlberg.github.io/Komputer-Store/)
